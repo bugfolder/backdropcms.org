@@ -60,7 +60,7 @@ class CRM_Contact_Form_Search_Criteria {
     $form->addOptionalQuickFormElement('all_tag_types');
     if ($form->_searchOptions['tags']) {
       // multiselect for categories
-      $contactTags = CRM_Core_BAO_Tag::getTags();
+      $contactTags = CRM_Core_BAO_Tag::getTags(separator: '- ');
 
       if ($contactTags) {
         $form->add('select', 'contact_tags', ts('Tag'), $contactTags, FALSE,
@@ -603,7 +603,7 @@ class CRM_Contact_Form_Search_Criteria {
    */
   public static function custom(&$form) {
     $form->add('hidden', 'hidden_custom', 1);
-    $groupDetails = CRM_Core_BAO_CustomGroup::getAll(['extends' => 'Contact', 'is_active' => TRUE]);
+    $groupDetails = CRM_Core_BAO_CustomGroup::getAll(['extends' => 'Contact', 'is_active' => TRUE], CRM_Core_Permission::VIEW);
     $form->assign('groupTree', $groupDetails);
 
     foreach ($groupDetails as $key => $group) {

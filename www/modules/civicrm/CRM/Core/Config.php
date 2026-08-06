@@ -20,7 +20,7 @@
  */
 
 require_once 'Log.php';
-require_once 'Mail.php';
+require_once 'PEAR.php';
 
 require_once 'api/api.php';
 
@@ -223,7 +223,9 @@ class CRM_Core_Config extends CRM_Core_Config_MagicMerge {
   }
 
   /**
-   * One function to get domain ID.
+   * Internal function gets or sets or resets the domain ID.
+   *
+   * @internal use CRM_Core_BAO_Domain::getDomainID() for a public getter.
    *
    * @param int $domainID
    * @param bool $reset

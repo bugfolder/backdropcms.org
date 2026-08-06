@@ -257,6 +257,9 @@ class CRM_Core_PseudoConstant {
    *   String if label is found
    */
   public static function getLabel($baoName, $fieldName, $key) {
+    if ($key === NULL) {
+      return NULL;
+    }
     $values = $baoName::buildOptions($fieldName, 'get');
     if ($values === FALSE) {
       return FALSE;
@@ -277,6 +280,9 @@ class CRM_Core_PseudoConstant {
    *   String if label is found
    */
   public static function getName($baoName, $fieldName, $key) {
+    if ($key === NULL) {
+      return NULL;
+    }
     $values = $baoName::buildOptions($fieldName, 'validate');
     if ($values === FALSE) {
       return FALSE;
@@ -501,7 +507,7 @@ class CRM_Core_PseudoConstant {
           $componentClause = " ( v.component_id IN ($componentIds ) )";
         }
       }
-      $condition = $condition . ' AND ' . $componentClause;
+      $condition .= ' AND ' . $componentClause;
 
       $activityTypes[$index] = CRM_Core_OptionGroup::values('activity_type', FALSE, FALSE, FALSE, $condition, $returnColumn);
     }

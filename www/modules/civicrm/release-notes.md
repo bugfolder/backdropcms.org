@@ -15,78 +15,50 @@ Other resources for identifying changes are:
     * https://github.com/civicrm/civicrm-joomla
     * https://github.com/civicrm/civicrm-wordpress
 
-## CiviCRM 6.10.8
+## CiviCRM 6.16.5
 
-Released June 28, 2026
+Released Tue Aug 04 2026 21:00:00 GMT-0700 (GMT-07:00)
 
-- **[Synopsis](release-notes/6.10.8.md#synopsis)**
-- **[Bugs resolved](release-notes/6.10.8.md#bugs)**
-- **[Credits](release-notes/6.10.8.md#credits)**
-- **[Feedback](release-notes/6.10.8.md#feedback)**
+- **[Synopsis](release-notes/6.16.5.md#synopsis)**
+- **[Security advisories](release-notes/6.16.5.md#security)**
+- **[Credits](release-notes/6.16.5.md#credits)**
+- **[Feedback](release-notes/6.16.5.md#feedback)**
 
-## CiviCRM 6.10.7
+## CiviCRM 6.16.4
 
-Released Wed Jun 17 2026 21:00:00 GMT-0700 (GMT-07:00)
+Released Tue Aug 04 2026 21:00:00 GMT-0700 (GMT-07:00)
 
-- **[Synopsis](release-notes/6.10.7.md#synopsis)**
-- **[Security advisories](release-notes/6.10.7.md#security)**
-- **[Credits](release-notes/6.10.7.md#credits)**
-- **[Feedback](release-notes/6.10.7.md#feedback)**
+- **[Synopsis](release-notes/6.16.4.md#synopsis)**
+- **[Security advisories](release-notes/6.16.4.md#security)**
+- **[Credits](release-notes/6.16.4.md#credits)**
+- **[Feedback](release-notes/6.16.4.md#feedback)**
 
-## CiviCRM 6.10.6
+## CiviCRM 6.16.3
 
-Released Mon Apr 13 2026 21:00:00 GMT-0700 (GMT-07:00)
+Released August 3, 2026
 
-- **[Synopsis](release-notes/6.10.6.md#synopsis)**
-- **[Bugs resolved](release-notes/6.10.6.md#bugs)**
-- **[Credits](release-notes/6.10.6.md#credits)**
-- **[Feedback](release-notes/6.10.6.md#feedback)**
+- **[Synopsis](release-notes/6.16.3.md#synopsis)**
+- **[Bugs resolved](release-notes/6.16.3.md#bugs)**
+- **[Credits](release-notes/6.16.3.md#credits)**
+- **[Feedback](release-notes/6.16.3.md#feedback)**
 
-## CiviCRM 6.10.5
+## CiviCRM 6.16.2
 
-Released April 1, 2026
+Released July 27, 2026
 
-- **[Synopsis](release-notes/6.10.5.md#synopsis)**
-- **[Bugs resolved](release-notes/6.10.5.md#bugs)**
-- **[Credits](release-notes/6.10.5.md#credits)**
-- **[Feedback](release-notes/6.10.5.md#feedback)**
+- **[Synopsis](release-notes/6.16.2.md#synopsis)**
+- **[Bugs resolved](release-notes/6.16.2.md#bugs)**
+- **[Credits](release-notes/6.16.2.md#credits)**
+- **[Feedback](release-notes/6.16.2.md#feedback)**
 
-## CiviCRM 6.10.4
+## CiviCRM 6.16.1
 
-Released March 23, 2026
+Released July 15, 2026
 
-- **[Synopsis](release-notes/6.10.4.md#synopsis)**
-- **[Bugs resolved](release-notes/6.10.4.md#bugs)**
-- **[Credits](release-notes/6.10.4.md#credits)**
-- **[Feedback](release-notes/6.10.4.md#feedback)**
-
-## CiviCRM 6.10.3
-
-Released March 18, 2026
-
-- **[Synopsis](release-notes/6.10.3.md#synopsis)**
-- **[Security advisories](release-notes/6.10.3.md#security)**
-- **[Bugs](release-notes/6.10.3.md#bugs)**
-- **[Credits](release-notes/6.10.3.md#credits)**
-- **[Feedback](release-notes/6.10.3.md#feedback)**
-
-## CiviCRM 6.10.2
-
-Released February 4, 2026
-
-- **[Synopsis](release-notes/6.10.2.md#synopsis)**
-- **[Bugs resolved](release-notes/6.10.2.md#bugs)**
-- **[Credits](release-notes/6.10.2.md#credits)**
-- **[Feedback](release-notes/6.10.2.md#feedback)**
-
-## CiviCRM 6.10.1
-
-Released January 26, 2026
-
-- **[Synopsis](release-notes/6.10.1.md#synopsis)**
-- **[Bugs resolved](release-notes/6.10.1.md#bugs)**
-- **[Credits](release-notes/6.10.1.md#credits)**
-- **[Feedback](release-notes/6.10.1.md#feedback)**
+- **[Synopsis](release-notes/6.16.1.md#synopsis)**
+- **[Bugs resolved](release-notes/6.16.1.md#bugs)**
+- **[Credits](release-notes/6.16.1.md#credits)**
+- **[Feedback](release-notes/6.16.1.md#feedback)**
 
 ## CiviCRM 6.1.0
 

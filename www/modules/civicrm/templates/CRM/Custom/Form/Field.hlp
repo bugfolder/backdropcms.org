@@ -47,10 +47,26 @@
   <p>
     {ts}Adds a database index which helps speed up searches on this field significantly. However, it can require more storage and can slow down the system if the data is frequently updated.{/ts}
   </p>
+  <p>
+    {ts}This setting is not recommended for Multi-Select or Checkboxes, as indexes are usually not helpful for fields that store multiple values.{/ts}
+  </p>
 {/htxt}
 
 {htxt id='is_view'}
   <p>
     {ts}Is this field set by PHP code (via a custom hook). This field will not be updated by CiviCRM.{/ts}
   </p>
+{/htxt}
+
+{htxt id='file_is_public'}
+  <ul>
+    <li>
+      <strong>{ts}Public:{/ts}</strong>
+      {ts}Files are directly viewable to anyone with the link (including anonymous). This offers moderate security because link urls are hard to guess, but not impossible.{/ts}
+    </li>
+    <li>
+      <strong>{ts}Private:{/ts}</strong>
+      {ts}Files are accesed indirectly via a secure link. Anyone with the link (including anonymous) can use it for a limited time until it expires. Private files are slower to load but improve security by keeping them out of a web-accessible directory.{/ts}
+    </li>
+  </ul>
 {/htxt}

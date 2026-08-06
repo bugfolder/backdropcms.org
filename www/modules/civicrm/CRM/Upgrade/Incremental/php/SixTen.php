@@ -60,27 +60,4 @@ class CRM_Upgrade_Incremental_php_SixTen extends CRM_Upgrade_Incremental_Base {
     return TRUE;
   }
 
-  public function upgrade_6_10_3($rev): void {
-    // Stub ensure that upgrade-messages are generated.
-  }
-
-  public function setPreUpgradeMessage(&$preUpgradeMessage, $rev, $currentVer = NULL): void {
-    if ($rev === '6.10.3' && CIVICRM_UF === 'Standalone') {
-      $preUpgradeMessage .= $this->createStaffMessage() ?? '';
-    }
-  }
-
-  public function setPostUpgradeMessage(&$postUpgradeMessage, $rev): void {
-    if ($rev === '6.10.3' && CIVICRM_UF === 'Standalone') {
-      $postUpgradeMessage .= $this->createStaffMessage() ?? '';
-    }
-  }
-
-  public function createStaffMessage(): ?string {
-    if (CRM_Core_DAO::singleValueQuery('SELECT count(*) FROM civicrm_role WHERE name = "staff"') > 0) {
-      return '<div class="crm-error"><p>' . ts('<strong>Warning</strong>: This system includes the "Staff" role. Please review <a %1>CIVI-SA-2026-03: Extraneous Staff Permission</a>.', [1 => 'href="https://civicrm.org/advisory/civi-sa-2026-03-standalone-extraneous-staff-permission" target="_blank"']) . '</p></div>';
-    }
-    return NULL;
-  }
-
 }

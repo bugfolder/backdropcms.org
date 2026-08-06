@@ -9,14 +9,14 @@
         storeValues: '<'
       },
       link: function($scope, $el, $attr, ctrls) {
-        var self = ctrls[0];
+        const self = ctrls[0];
         self.afFormCtrl = ctrls[1];
       },
       controller: function($scope, $element, crmApi4) {
-        let ctrl = this;
-        let localData = [];
-        let joinOffsets = {};
-        let ts = $scope.ts = CRM.ts('org.civicrm.afform');
+        const ctrl = this;
+        const localData = [];
+        const joinOffsets = {};
+        const ts = $scope.ts = CRM.ts('org.civicrm.afform');
 
         this.getData = function() {
           return ctrl.afFormCtrl ? ctrl.afFormCtrl.getData(ctrl.modelName) : localData;
@@ -28,13 +28,13 @@
             $element.find('[search-name][display-name]').attr('display-name');
         };
         this.getEntity = function() {
-          return this.afFormCtrl.getEntity(this.modelName);
+          return this.afFormCtrl ? this.afFormCtrl.getEntity(this.modelName) : null;
         };
         this.getEntityType = function() {
-          return this.afFormCtrl.getEntity(this.modelName).type;
+          return this.afFormCtrl ? this.afFormCtrl.getEntity(this.modelName)?.type : null;
         };
         this.getFieldData = function() {
-          var data = ctrl.getData();
+          const data = ctrl.getData();
           if (!data.length) {
             data.push({fields: {}});
           }
@@ -77,13 +77,15 @@
         };
 
         this.$onInit = function() {
-          if (this.storeValues) {
-            $scope.$watch(ctrl.getFieldData, function(newVal, oldVal) {
+          $scope.$watch(ctrl.getFieldData, (newVal, oldVal) => {
+            $element[0].dispatchEvent(new Event('crmFormChangeFilters'));
+            if (this.storeValues) {
               if (typeof newVal === 'object' && typeof oldVal === 'object' && Object.keys(newVal).length) {
                 CRM.cache.set(getCacheKey(), newVal);
               }
-            }, true);
-          }
+            }
+          }, true);
+
           $scope.$watch(this.getSearchParamSetId, () => this.fetchSearchParamSetValues());
         };
 

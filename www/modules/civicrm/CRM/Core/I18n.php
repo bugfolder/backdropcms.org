@@ -188,19 +188,12 @@ class CRM_Core_I18n {
     static $enabled = NULL;
 
     if (!$all) {
-      $optionValues = [];
       // Use `getValues`, not `buildOptions` to bypass hook_civicrm_fieldOptions.  See dev/core#1132.
-      CRM_Core_OptionValue::getValues(['name' => 'languages'], $optionValues, 'weight', TRUE);
-      $all = array_column($optionValues, 'label', 'name');
+      $optionValues = CRM_Core_OptionValue::getValues(['name' => 'languages']);
+      $activeOptionValues = array_filter($optionValues, fn ($row) => $row['is_active']);
 
-      // FIXME: How is this not duplicative of the lines above?
-      // get labels
-      $rows = [];
-      $labels = [];
-      CRM_Core_OptionValue::getValues(['name' => 'languages'], $rows);
-      foreach ($rows as $id => $row) {
-        $labels[$row['name']] = $row['label'];
-      }
+      $all = array_column($activeOptionValues, 'label', 'name');
+      $labels = array_column($optionValues, 'label', 'name');
 
       // check which ones are available; add them to $all if not there already
       $codes = [];
@@ -254,7 +247,7 @@ class CRM_Core_I18n {
   public static function getFormatLocales(): array {
     $values = CRM_Core_OptionValue::getValues(['name' => 'languages'], $optionValues, 'label', TRUE);
     $return = [];
-    $return[NULL] = ts('Inherit from language');
+    $return[''] = ts('Inherit from language');
     foreach ($values as $value) {
       $return[$value['name']] = $value['label'];
     }
@@ -281,7 +274,9 @@ class CRM_Core_I18n {
     else {
       $codes = $settings->get('uiLanguages');
       if (!$codes) {
-        $codes = [$settings->get('lcMessages')];
+        $codes = $settings->get('lcMessages') ? [$settings->get('lcMessages')] : [];
+        // This ^^^ seems tighter, but if it proves regressive, then consider:
+        // $codes = [$settings->get('lcMessages') ?? ''];
       }
     }
     return $justCodes ? $codes
@@ -303,8 +298,8 @@ class CRM_Core_I18n {
     for ($i = 1; $i < func_num_args(); $i++) {
       $arg = func_get_arg($i);
       if (is_array($arg)) {
-        foreach ($arg as $aarg) {
-          $tr['%' . ++$p] = $aarg;
+        foreach ($arg as $key => $aarg) {
+          $tr['%' . $key] = $aarg;
         }
       }
       else {
@@ -472,7 +467,7 @@ class CRM_Core_I18n {
     // dont translate if we've done exactMatch already
     if (!$exactMatch) {
       // use plural if required parameters are set
-      if (isset($count) && isset($plural)) {
+      if (isset($count, $plural)) {
 
         if ($this->_phpgettext) {
           $text = $this->_phpgettext->ngettext($text, $plural, (int) $count);
@@ -763,9 +758,6 @@ class CRM_Core_I18n {
    */
   public static  function getContactDefaultLanguage() {
     $language = Civi::settings()->get('contact_default_language');
-    if ($language == 'undefined') {
-      return NULL;
-    }
     if (empty($language) || $language === '*default*') {
       $language = civicrm_api3('setting', 'getvalue', [
         'name' => 'lcMessages',
@@ -775,7 +767,6 @@ class CRM_Core_I18n {
     elseif ($language == 'current_site_language') {
       return CRM_Core_I18n::getLocale();
     }
-
     return $language;
   }
 

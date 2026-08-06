@@ -31,7 +31,7 @@
     {foreach from=$cd_edit.fields item=element key=field_id}
       {if $element.is_view eq 0}{* fix for CRM-2699 *}
         {if !empty($element.help_pre)}
-            <tr><td class="label"></td><td class="description">{$element.help_pre|escape}</td></tr>
+            <tr><td class="label"></td><td class="description">{$element.help_pre|purify}</td></tr>
         {/if}
   {if !empty($element.options_per_line)}
         {assign var="element_name" value=$element.element_name}
@@ -47,7 +47,7 @@
               {/foreach}
               {* Include the edit options list for admins *}
               {if $formElement.html|strstr:"crm-option-edit-link"}
-                {$formElement.html|regex_replace:"@^.*(<a href=.*? class=.crm-option-edit-link.*?</a>)$@":"$1"}
+                {$formElement.html|regex_replace:"@^.*(<a href=.*? class=.crm-option-edit-link.*?</a>)$@s":"$1"}
               {/if}
             </div>
           </td>
@@ -67,7 +67,7 @@
         {/if}
           {* Include the edit options list for admins *}
           {if $formElement.html|strstr:"crm-option-edit-link"}
-            {$formElement.html|regex_replace:"@^.*(<a href=.*? class=.crm-option-edit-link.*?</a>)$@":"$1"}
+            {$formElement.html|regex_replace:"@^.*(<a href=.*? class=.crm-option-edit-link.*?</a>)$@s":"$1"}
           {/if}
           </td>
   {/if}
